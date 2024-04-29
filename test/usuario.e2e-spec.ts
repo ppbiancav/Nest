@@ -87,16 +87,29 @@ describe('Testes dos Módulos Usuario e Auth (e2e)', () => {
     .set('Authorization', `${token}`)
     .send({
       id: usuarioId,
-      nome: 'Geandro',
+      nome: 'Bianca',
       usuario: 'root@root.com',
-      senha: 'geandro123',
+      senha: 'bianca123',
       foto: '-',
     })
     .expect(200)
     .then( resposta => {
-      expect("Geandro").toEqual(resposta.body.nome);
+      expect("Bianca").toEqual(resposta.body.nome);
     })
 
   })
   
+  it("06 - Deve Buscar Usuário por Id", async () =>{
+    const userId = 1;
+
+    return request(app.getHttpServer())
+    .get(`/usuarios/${userId}`)
+    .set('Authorization', `${token}`)
+    .expect(200)
+    .then( resposta => {
+      expect(resposta.body.id).toEqual(userId); 
+    })
+
+  }) 
+
 });
