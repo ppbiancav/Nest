@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Postagem } from './postagem/entities/postagem.entity';
-import { PostagemModule } from './postagem/postagem.module';
-import { TemaModule } from './tema/tema.module';
-import { Tema } from './tema/entities/tema.entity';
 import { AuthModule } from './auth/auth.module';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
+import { Postagem } from './postagem/entities/postagem.entity';
+import { Tema } from './tema/entities/tema.entity';
+import { TemaModule } from './tema/tema.module';
+import { PostagemModule } from './postagem/postagem.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       database: 'db_blogpessoal',
       entities: [Postagem, Tema, Usuario],
       synchronize: true,
-      logging: true,
+      //logging: true, 
     }),
     PostagemModule,
     TemaModule,
@@ -30,3 +30,5 @@ import { UsuarioModule } from './usuario/usuario.module';
   providers: [],
 })
 export class AppModule {}
+
+// registrado todos os módulos da aplicaçao
